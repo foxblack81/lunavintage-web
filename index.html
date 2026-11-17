@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LunaVintage · Ropa vintage de los 90 con alma</title>
+<meta name="description" content="Chaquetas racing, Carhartt, sudaderas Polo Sport Ralph Lauren y piezas únicas de los 90 y 2000. Ropa vintage seleccionada a mano.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vino:#3B0A14; --vino-hondo:#24050C; --vino-claro:#6B1A2A;
+    --crema:#F3E6D3; --oro:#C9A45C; --oro-suave:#E2C995;
+    --serif:"Playfair Display", Georgia, serif; --texto:"Lora", Georgia, serif;
+    --tienda:"https://8a5rjv-q2.myshopify.com";
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--vino);color:var(--crema);font-family:var(--texto);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+
+  /* Anuncio + cabecera */
+  .anuncio{background:var(--vino-hondo);color:var(--oro);text-align:center;font-size:12px;letter-spacing:.18em;text-transform:uppercase;padding:9px 12px;border-bottom:1px solid var(--vino-claro)}
+  header{position:sticky;top:0;z-index:20;background:rgba(59,10,20,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,164,92,.25)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:var(--serif);font-size:28px;text-decoration:none;letter-spacing:.01em}
+  .logo em{color:var(--oro);font-style:italic}
+  .nav ul{display:flex;gap:28px;list-style:none}
+  .nav ul a{text-decoration:none;font-size:14px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+  .nav ul a:hover{color:var(--oro);opacity:1}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--oro);color:var(--vino-hondo);font-family:var(--texto);font-weight:600;font-size:14px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:15px 30px;border-radius:999px;border:1px solid var(--oro);cursor:pointer;transition:background .2s,color .2s}
+  .btn:hover{background:transparent;color:var(--oro)}
+  .btn.linea{background:transparent;color:var(--oro)}
+  .btn.linea:hover{background:var(--oro);color:var(--vino-hondo)}
+  .nav .btn{padding:10px 20px;font-size:12px}
+  @media (max-width:760px){.nav ul{display:none}}
+
+  /* Portada */
+  .hero{position:relative;min-height:min(88vh,820px);display:flex;align-items:center;overflow:hidden}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% center}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(36,5,12,.92) 0%,rgba(36,5,12,.65) 40%,rgba(36,5,12,0) 70%)}
+  .hero .wrap{position:relative;z-index:1}
+  .hero-txt{max-width:520px}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(48px,7vw,88px);line-height:1.02;margin-bottom:20px}
+  .hero h1 em{color:var(--oro)}
+  .hero p{color:var(--oro-suave);font-size:18px;margin-bottom:34px;max-width:440px}
+  .hero .acciones{display:flex;gap:14px;flex-wrap:wrap}
+  @media (max-width:760px){
+    .hero{align-items:flex-end;min-height:92vh}
+    .hero::after{background:linear-gradient(0deg,rgba(36,5,12,.95) 0%,rgba(36,5,12,.6) 45%,rgba(36,5,12,0) 75%)}
+    .hero-txt{padding-bottom:48px}
+  }
+
+  /* Franja */
+  .franja{background:var(--oro);color:var(--vino);overflow:hidden;white-space:nowrap;padding:14px 0}
+  .franja div{display:inline-block;font-family:var(--serif);font-style:italic;font-size:24px;animation:pasa 28s linear infinite}
+  .franja span{margin:0 22px}
+  @keyframes pasa{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.franja div{animation:none}}
+
+  /* Secciones */
+  section{padding:96px 0}
+  .titulo{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.5vw,52px);line-height:1.08}
+  h2 em{color:var(--oro)}
+  .filtros{display:flex;gap:10px;flex-wrap:wrap}
+  .filtros button{background:transparent;color:var(--crema);border:1px solid rgba(243,230,211,.35);border-radius:999px;padding:9px 18px;font-family:var(--texto);font-size:14px;cursor:pointer}
+  .filtros button[aria-pressed="true"],.filtros button:hover{border-color:var(--oro);color:var(--oro)}
+
+  /* Productos */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  @media (max-width:960px){.grid{grid-template-columns:repeat(2,1fr);gap:18px}}
+  .card{cursor:pointer;background:none;border:0;color:inherit;text-align:left;font:inherit}
+  .card .foto{position:relative;aspect-ratio:1;background:#F4EFE6;overflow:hidden}
+  .card .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+  .card .foto img+img{opacity:0}
+  .card:hover .foto img+img,.card:focus-visible .foto img+img{opacity:1}
+  .unica{position:absolute;top:12px;left:12px;z-index:1;background:var(--vino);color:var(--oro);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+  .card h3{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.25;margin:16px 0 6px}
+  .card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:10px;color:var(--oro-suave);font-size:15px}
+  .card .precio{color:var(--oro);font-weight:600;font-size:17px}
+  @media (max-width:560px){.card h3{font-size:16px}.unica{font-size:9px;padding:4px 8px}}
+
+  /* Ficha */
+  dialog{border:0;padding:0;background:var(--vino-hondo);color:var(--crema);width:min(980px,100% - 24px);max-height:92vh;margin:auto;border:1px solid rgba(201,164,92,.35)}
+  dialog::backdrop{background:rgba(10,0,3,.75)}
+  .ficha{display:grid;grid-template-columns:1.1fr 1fr}
+  @media (max-width:760px){.ficha{grid-template-columns:1fr}}
+  .galeria{background:#F4EFE6}
+  .galeria .principal{aspect-ratio:1;width:100%;object-fit:cover}
+  .miniaturas{display:flex;gap:8px;padding:10px;background:var(--vino-hondo)}
+  .miniaturas button{width:70px;height:70px;border:1px solid transparent;padding:0;cursor:pointer;background:#F4EFE6}
+  .miniaturas button[aria-current="true"]{border-color:var(--oro)}
+  .miniaturas img{width:100%;height:100%;object-fit:cover}
+  .info{padding:36px;display:flex;flex-direction:column;gap:16px;overflow:auto}
+  .info .marca{color:var(--oro);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+  .info h3{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.15}
+  .info .precio{font-size:26px;color:var(--oro)}
+  .info p{color:rgba(243,230,211,.85)}
+  .info ul{list-style:none;display:grid;gap:8px;border-top:1px solid rgba(201,164,92,.25);padding-top:16px;font-size:14px}
+  .info li::before{content:"✦";color:var(--oro);margin-right:10px}
+  .cerrar{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(201,164,92,.5);background:var(--vino-hondo);color:var(--oro);font-size:20px;cursor:pointer;z-index:2}
+
+  /* Historia */
+  .historia{background:var(--vino-hondo)}
+  .historia .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  @media (max-width:860px){.historia .wrap{grid-template-columns:1fr;gap:36px}}
+  .historia p{color:rgba(243,230,211,.85);margin-top:18px;font-size:17px}
+  .historia img{aspect-ratio:4/5;object-fit:cover;width:100%}
+  .firma{font-family:var(--serif);font-style:italic;color:var(--oro);font-size:26px;margin-top:26px}
+
+  /* Ventajas */
+  .ventajas{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
+  @media (max-width:760px){.ventajas{grid-template-columns:1fr}}
+  .ventaja{border:1px solid rgba(201,164,92,.3);padding:30px}
+  .ventaja .num{font-family:var(--serif);font-style:italic;color:var(--oro);font-size:40px;line-height:1}
+  .ventaja h3{font-family:var(--serif);font-weight:400;font-size:22px;margin:14px 0 8px}
+  .ventaja p{color:rgba(243,230,211,.8);font-size:15px}
+
+  /* Preguntas */
+  .faq{max-width:780px}
+  details{border-bottom:1px solid rgba(201,164,92,.25);padding:20px 0}
+  summary{cursor:pointer;font-family:var(--serif);font-size:21px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--oro);font-size:26px;line-height:1}
+  details[open] summary::after{content:"−"}
+  details p{color:rgba(243,230,211,.82);margin-top:12px}
+
+  /* Cierre */
+  .cierre{text-align:center;background:linear-gradient(180deg,var(--vino) 0%,var(--vino-hondo) 100%)}
+  .cierre p{color:var(--oro-suave);max-width:520px;margin:18px auto 32px}
+  footer{background:var(--vino-hondo);border-top:1px solid rgba(201,164,92,.25);padding:40px 0;font-size:14px;color:rgba(243,230,211,.7)}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  footer nav{display:flex;gap:20px;flex-wrap:wrap}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--oro)}
+  :focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div class="anuncio">Piezas únicas de los 90 y 2000 · Cada prenda, una sola unidad</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#inicio">Luna<em>Vintage</em></a>
+    <ul>
+      <li><a href="#coleccion">Colección</a></li>
+      <li><a href="#historia">Nosotros</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+    </ul>
+    <a class="btn" href="https://8a5rjv-q2.myshopify.com/cart">Carrito</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero" style="padding:0" aria-label="Portada">
+    <img src="img/hero.jpg" alt="Interior vintage en tonos vino con el logo de LunaVintage">
+    <div class="wrap">
+      <div class="hero-txt">
+        <h1><em>Vintage</em><br>con alma</h1>
+        <p>Chaquetas racing, Carhartt y sudaderas Polo Sport de los 90. Seleccionadas a mano, una a una.</p>
+        <div class="acciones">
+          <a class="btn" href="#coleccion">Ver el nuevo drop</a>
+          <a class="btn linea" href="#historia">Nuestra historia</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="franja" aria-hidden="true"><div>
+    <span>Piezas únicas</span>✦<span>Vintage 90s</span>✦<span>Ralph Lauren</span>✦<span>Carhartt</span>✦<span>Racing</span>✦<span>Streetwear</span>✦
+    <span>Piezas únicas</span>✦<span>Vintage 90s</span>✦<span>Ralph Lauren</span>✦<span>Carhartt</span>✦<span>Racing</span>✦<span>Streetwear</span>✦
+  </div></div>
+
+  <section id="coleccion">
+    <div class="wrap">
+      <div class="titulo">
+        <h2>Nuevo <em>drop</em></h2>
+        <div class="filtros" role="group" aria-label="Filtrar prendas">
+          <button aria-pressed="true" data-f="todo">Todo</button>
+          <button aria-pressed="false" data-f="Chaquetas">Chaquetas</button>
+          <button aria-pressed="false" data-f="Sudaderas">Sudaderas</button>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="historia" id="historia">
+    <div class="wrap">
+      <img src="img/master_1.jpg" alt="Cortavientos Master de los 90 en turquesa y morado" loading="lazy">
+      <div>
+        <h2>Ropa con <em>historia</em></h2>
+        <p>LunaVintage nace del gusto por la ropa que ya ha vivido. Buscamos prendas de los 90 y 2000 con carácter: chaquetas de competición, workwear americano, sudaderas color block y cortavientos que vuelven a estar en la calle.</p>
+        <p>Cada pieza se revisa, se limpia y se fotografía tal como es. No hay dos iguales: cuando una se va, no vuelve.</p>
+        <div class="firma">— Luna</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 style="margin-bottom:36px">Cómo <em>funciona</em></h2>
+      <div class="ventajas">
+        <div class="ventaja"><div class="num">01</div><h3>Una sola unidad</h3><p>Cada prenda es única. La talla y el estado van indicados en su ficha, con fotos reales de la pieza.</p></div>
+        <div class="ventaja"><div class="num">02</div><h3>Pago seguro</h3><p>El pago se hace en nuestra tienda Shopify, con tarjeta y los métodos de pago habituales.</p></div>
+        <div class="ventaja"><div class="num">03</div><h3>¿Dudas? Pregunta</h3><p>Si quieres medidas exactas o más fotos de una prenda, escríbenos antes de comprar y te respondemos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="preguntas" style="padding-top:0">
+    <div class="wrap faq">
+      <h2 style="margin-bottom:20px">Preguntas <em>frecuentes</em></h2>
+      <details><summary>¿Las prendas son originales?</summary><p>Sí, trabajamos con prendas vintage seleccionadas. En la ficha de cada una indicamos marca, talla y detalles de etiqueta para que sepas exactamente lo que compras.</p></details>
+      <details><summary>¿En qué estado están?</summary><p>Son prendas de segunda mano con años de historia. Las revisamos una a una y mostramos en las fotos cualquier detalle de uso. Si quieres ver algo en concreto, pídenos más fotos.</p></details>
+      <details><summary>¿Cómo sé si me queda bien?</summary><p>Las tallas vintage pueden variar respecto a las actuales. Escríbenos y te pasamos las medidas de largo, pecho y manga.</p></details>
+      <details><summary>¿Cómo son los envíos y las devoluciones?</summary><p>Los costes de envío se calculan al finalizar la compra. Puedes consultar las condiciones de envío y devolución en las <a href="https://8a5rjv-q2.myshopify.com/policies/shipping-policy" style="color:var(--oro)">políticas de la tienda</a>.</p></details>
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="wrap">
+      <h2>Lo que te gusta, <em>hoy</em></h2>
+      <p>Las piezas únicas no esperan. Si una prenda te enamora, no la dejes para mañana.</p>
+      <a class="btn" href="https://8a5rjv-q2.myshopify.com/collections/all">Ver toda la tienda</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#inicio" style="font-size:22px">Luna<em>Vintage</em></a>
+    <nav>
+      <a href="https://8a5rjv-q2.myshopify.com/collections/all">Tienda</a>
+      <a href="https://8a5rjv-q2.myshopify.com/pages/contact">Contacto</a>
+      <a href="https://8a5rjv-q2.myshopify.com/policies/privacy-policy">Privacidad</a>
+      <a href="https://8a5rjv-q2.myshopify.com/policies/terms-of-service">Términos</a>
+    </nav>
+    <span>© 2026 LunaVintage</span>
+  </div>
+</footer>
+
+<dialog id="ficha" aria-labelledby="f-titulo">
+  <button class="cerrar" id="cerrar" aria-label="Cerrar">×</button>
+  <div class="ficha">
+    <div class="galeria">
+      <img class="principal" id="f-img" alt="">
+      <div class="miniaturas" id="f-mini"></div>
+    </div>
+    <div class="info">
+      <div class="marca" id="f-marca"></div>
+      <h3 id="f-titulo"></h3>
+      <div class="precio" id="f-precio"></div>
+      <p id="f-desc"></p>
+      <a class="btn" id="f-comprar" href="#">Comprar en la tienda</a>
+      <ul>
+        <li>Pieza única · una sola unidad</li>
+        <li>Pago seguro con Shopify</li>
+        <li>¿Dudas de talla? Escríbenos antes de comprar</li>
+      </ul>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const TIENDA = "https://8a5rjv-q2.myshopify.com/products/";
+const productos = [
+  {id:"redbull", tipo:"Chaquetas", marca:"Racing 90s", titulo:"Chaqueta de cuero Racing 90s", talla:"M", precio:170, handle:"chaqueta-racing-90s",
+   desc:"Chaqueta de cuero estilo motorsport de los 90, con bloques rojo, negro y blanco y parches bordados de competición. Cierre con cremallera, cuello mao con broche y bolsillos con cremallera."},
+  {id:"carhartt", tipo:"Chaquetas", marca:"Carhartt", titulo:"Chaqueta Carhartt Active Jacket", talla:"M", precio:60, handle:"chaqueta-carhartt-active-jacket-talla-m",
+   desc:"Chaqueta Carhartt Active con capucha en lona de algodón marrón clásico, forro acolchado en rombos, bolsillo frontal con parche Carhartt y puños de punto negro. Fabricada en EE. UU."},
+  {id:"master", tipo:"Chaquetas", marca:"Master", titulo:"Cortavientos Master 90s Turquesa y Morado", talla:"Consultar", precio:50, handle:"cortavientos-master-90s-turquesa-y-morado",
+   desc:"Cortavientos de los 90 en nailon con bloques turquesa, morado y azul marino. Capucha desmontable con cordón, cremallera con botones a presión, bolsillo frontal tipo canguro y puños ajustables."},
+  {id:"poloM", tipo:"Sudaderas", marca:"Ralph Lauren · Polo Sport", titulo:"Sudadera Polo Sport 90s Beige y Negro", talla:"M", precio:75, handle:"sudadera-sport-retro-talla-m",
+   desc:"Sudadera de cuello redondo con diseño color block en negro y arena, logo Polo Sport bordado con bandera y puños acanalados."},
+  {id:"poloL", tipo:"Sudaderas", marca:"Ralph Lauren · Polo Sport", titulo:"Sudadera Polo Sport 90s Turquesa", talla:"L", precio:75, handle:"sudadera-polo-sport-ralph-lauren-90s-turquesa-talla-l",
+   desc:"Sudadera de cuello redondo con diseño color block en azul turquesa y azul marino, logo Polo Sport bordado en azul y rojo con bandera."},
+  {id:"poloXL", tipo:"Sudaderas", marca:"Ralph Lauren · Polo Sport", titulo:"Sudadera Polo Sport 90s Gris", talla:"XL", precio:75, handle:"sudadera-sport-color-block-gris-talla-xl",
+   desc:"Sudadera color block en gris jaspeado y negro, logo Polo Sport bordado en azul y rojo con bandera, bolsillo canguro y puños acanalados."}
+];
+const euro = n => n.toLocaleString("es-ES",{style:"currency",currency:"EUR",minimumFractionDigits:0});
+const grid = document.getElementById("grid");
+
+function pinta(filtro){
+  grid.innerHTML = "";
+  productos.filter(p => filtro==="todo" || p.tipo===filtro).forEach(p=>{
+    const b = document.createElement("button");
+    b.className = "card"; b.type = "button";
+    b.setAttribute("aria-label", `${p.titulo}, talla ${p.talla}, ${euro(p.precio)}`);
+    b.innerHTML = `<div class="foto"><span class="unica">Pieza única</span>
+      <img src="img/${p.id}_1.jpg" alt="" loading="lazy"><img src="img/${p.id}_2.jpg" alt="" loading="lazy"></div>
+      <h3>${p.titulo}</h3><div class="meta"><span>Talla ${p.talla}</span><span class="precio">${euro(p.precio)}</span></div>`;
+    b.addEventListener("click", ()=>abre(p));
+    grid.appendChild(b);
+  });
+}
+document.querySelectorAll(".filtros button").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".filtros button").forEach(x=>x.setAttribute("aria-pressed","false"));
+    btn.setAttribute("aria-pressed","true"); pinta(btn.dataset.f);
+  });
+});
+
+const dlg = document.getElementById("ficha");
+function abre(p){
+  const fotos = [`img/${p.id}_1.jpg`, `img/${p.id}_2.jpg`];
+  const principal = document.getElementById("f-img");
+  const pon = i => { principal.src = fotos[i]; principal.alt = p.titulo;
+    [...mini.children].forEach((c,j)=>c.setAttribute("aria-current", j===i)); };
+  const mini = document.getElementById("f-mini"); mini.innerHTML = "";
+  fotos.forEach((f,i)=>{ const t=document.createElement("button"); t.type="button";
+    t.setAttribute("aria-label",`Foto ${i+1}`); t.innerHTML=`<img src="${f}" alt="">`;
+    t.onclick=()=>pon(i); mini.appendChild(t); });
+  pon(0);
+  document.getElementById("f-marca").textContent = p.marca;
+  document.getElementById("f-titulo").textContent = `${p.titulo} · Talla ${p.talla}`;
+  document.getElementById("f-precio").textContent = euro(p.precio);
+  document.getElementById("f-desc").textContent = p.desc;
+  document.getElementById("f-comprar").href = TIENDA + p.handle;
+  dlg.showModal();
+}
+document.getElementById("cerrar").onclick = () => dlg.close();
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+pinta("todo");
+</script>
+</body>
+</html>
