@@ -1,0 +1,7 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>LV send</title></head><body style="font:20px sans-serif;padding:20px">Preparando fotos para Facebook...
+<script>
+const fs=['01_23_camiseta_nike_united_90_fb.jpg', '02_24_sudadera_essentials_gris_fb.jpg', '03_25_camiseta_essentials_blanca_fb.jpg', '04_26_zapatillas_nike_court_mid_fb.jpg', '05_27_botas_calcetin_negras_fb.jpg', '06_28_zapatillas_lancetti_negras_fb.jpg', '07_29_zapatillas_lancetti_azul_fb.jpg', '08_30_botines_tacon_negros_fb.jpg', '09_31_botas_blogger_camel_fb.jpg', '10_32_zapatillas_bichota_tachas_fb.jpg', '11_33_adidas_gazelle_indoor_rosa_fb.jpg', 'look1_essentials_guess_gazelle.jpg', 'look2_nike_united_vaqueros_brillo_court.jpg'];
+(async()=>{const lv=[];for(const n of fs){const r=await fetch('fb/'+n);lv.push({n,b:await r.blob()});}
+if(window.opener){window.opener.postMessage({lv},'https://www.facebook.com');document.body.textContent='Listo: '+lv.length+' fotos enviadas. Puedes cerrar esta pestaña.';}
+else document.body.textContent='Sin ventana de origen';})();
+</script></body></html>
